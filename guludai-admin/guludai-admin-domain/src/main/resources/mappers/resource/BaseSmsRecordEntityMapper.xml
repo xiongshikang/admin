@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.dataway.dao.BaseSmsRecordEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="sms_record" jdbcType="CHAR" property="smsRecord" />
+		<result column="sms_phone" jdbcType="CHAR" property="smsPhone" />
+		<result column="send_content" jdbcType="VARCHAR" property="sendContent" />
+		<result column="send_status" jdbcType="CHAR" property="sendStatus" />
+		<result column="send_start_time" jdbcType="TIMESTAMP" property="sendStartTime" />
+		<result column="send_end_time" jdbcType="TIMESTAMP" property="sendEndTime" />
+		<result column="check_status" jdbcType="CHAR" property="checkStatus" />
+		<result column="response_data" jdbcType="VARCHAR" property="responseData" />
+		<result column="sms_code" jdbcType="VARCHAR" property="smsCode" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, sms_record, sms_phone, send_content, send_status, send_start_time, send_end_time,
+		check_status, response_data, sms_code, version, create_time, update_time, data_status,
+		disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_sms_record
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from base_sms_record
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		insert into base_sms_record (id, sms_record, sms_phone,
+		send_content, send_status, send_start_time,
+		send_end_time, check_status, response_data,
+		sms_code, version, create_time,
+		update_time, data_status, disk_status
+		)
+		values (#{id,jdbcType=BIGINT}, #{smsRecord,jdbcType=CHAR}, #{smsPhone,jdbcType=CHAR},
+		#{sendContent,jdbcType=VARCHAR}, #{sendStatus,jdbcType=CHAR}, #{sendStartTime,jdbcType=TIMESTAMP},
+		#{sendEndTime,jdbcType=TIMESTAMP}, #{checkStatus,jdbcType=CHAR}, #{responseData,jdbcType=VARCHAR},
+		#{smsCode,jdbcType=VARCHAR}, #{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		insert into base_sms_record
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="smsRecord != null">
+				sms_record,
+			</if>
+			<if test="smsPhone != null">
+				sms_phone,
+			</if>
+			<if test="sendContent != null">
+				send_content,
+			</if>
+			<if test="sendStatus != null">
+				send_status,
+			</if>
+			<if test="sendStartTime != null">
+				send_start_time,
+			</if>
+			<if test="sendEndTime != null">
+				send_end_time,
+			</if>
+			<if test="checkStatus != null">
+				check_status,
+			</if>
+			<if test="responseData != null">
+				response_data,
+			</if>
+			<if test="smsCode != null">
+				sms_code,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="smsRecord != null">
+				#{smsRecord,jdbcType=CHAR},
+			</if>
+			<if test="smsPhone != null">
+				#{smsPhone,jdbcType=CHAR},
+			</if>
+			<if test="sendContent != null">
+				#{sendContent,jdbcType=VARCHAR},
+			</if>
+			<if test="sendStatus != null">
+				#{sendStatus,jdbcType=CHAR},
+			</if>
+			<if test="sendStartTime != null">
+				#{sendStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sendEndTime != null">
+				#{sendEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="checkStatus != null">
+				#{checkStatus,jdbcType=CHAR},
+			</if>
+			<if test="responseData != null">
+				#{responseData,jdbcType=VARCHAR},
+			</if>
+			<if test="smsCode != null">
+				#{smsCode,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		update base_sms_record
+		<set>
+			<if test="smsRecord != null">
+				sms_record = #{smsRecord,jdbcType=CHAR},
+			</if>
+			<if test="smsPhone != null">
+				sms_phone = #{smsPhone,jdbcType=CHAR},
+			</if>
+			<if test="sendContent != null">
+				send_content = #{sendContent,jdbcType=VARCHAR},
+			</if>
+			<if test="sendStatus != null">
+				send_status = #{sendStatus,jdbcType=CHAR},
+			</if>
+			<if test="sendStartTime != null">
+				send_start_time = #{sendStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sendEndTime != null">
+				send_end_time = #{sendEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="checkStatus != null">
+				check_status = #{checkStatus,jdbcType=CHAR},
+			</if>
+			<if test="responseData != null">
+				response_data = #{responseData,jdbcType=VARCHAR},
+			</if>
+			<if test="smsCode != null">
+				sms_code = #{smsCode,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		update base_sms_record
+		set sms_record = #{smsRecord,jdbcType=CHAR},
+		sms_phone = #{smsPhone,jdbcType=CHAR},
+		send_content = #{sendContent,jdbcType=VARCHAR},
+		send_status = #{sendStatus,jdbcType=CHAR},
+		send_start_time = #{sendStartTime,jdbcType=TIMESTAMP},
+		send_end_time = #{sendEndTime,jdbcType=TIMESTAMP},
+		check_status = #{checkStatus,jdbcType=CHAR},
+		response_data = #{responseData,jdbcType=VARCHAR},
+		sms_code = #{smsCode,jdbcType=VARCHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<select id="selectSmsRecord"  resultMap="BaseResultMap" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		select
+		<include refid="Base_Column_List" />
+		from base_sms_record
+		<where>
+			<if test="smsRecord != null">
+				AND sms_record = #{smsRecord,jdbcType=CHAR}
+			</if>
+			<if test="smsPhone != null">
+				AND sms_phone = #{smsPhone,jdbcType=CHAR}
+			</if>
+			<if test="sendContent != null">
+				AND send_content = #{sendContent,jdbcType=VARCHAR}
+			</if>
+			<if test="sendStatus != null">
+				AND send_status = #{sendStatus,jdbcType=CHAR}
+			</if>
+			<if test="sendStartTime != null">
+				AND send_start_time = #{sendStartTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="sendEndTime != null">
+				AND send_end_time = #{sendEndTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="checkStatus != null">
+				AND check_status = #{checkStatus,jdbcType=CHAR}
+			</if>
+			<if test="responseData != null">
+				AND response_data = #{responseData,jdbcType=VARCHAR}
+			</if>
+			<if test="smsCode != null">
+				AND sms_code = #{smsCode,jdbcType=VARCHAR}
+			</if>
+			<if test="version != null">
+				AND version = #{version,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updateTime != null">
+				AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="dataStatus != null">
+				AND data_status = #{dataStatus,jdbcType=CHAR}
+			</if>
+			<if test="diskStatus != null">
+				AND disk_status = #{diskStatus,jdbcType=CHAR}
+			</if>
+		</where>
+		ORDER BY  send_end_time DESC
+	</select>
+
+	<select id="verifySms"  resultType="java.lang.Integer"  parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsRecordEntity">
+		select
+			count(*)
+		from base_sms_record
+		WHERE sms_phone = #{smsPhone,jdbcType=CHAR}
+		 	AND data_status = 'Y'
+		 	AND disk_status = 'Y'
+		 	AND check_status = 'Y'
+			AND send_content = #{sendContent,jdbcType=VARCHAR}
+			AND send_end_time &gt;=#{sendStartTime,jdbcType=TIMESTAMP}
+			AND send_end_time &lt;=#{sendEndTime,jdbcType=TIMESTAMP}
+	</select>
+
+	<update id="updateBySmsRecord">
+		update base_sms_record set check_status = 'N' WHERE sms_record = #{smsRecord,jdbcType=CHAR}
+	</update>
+
+
+	<select id="selectSmsMaxNum" resultType="java.lang.Integer" >
+		SELECT
+			 COUNT(*)
+		FROM base_sms_record WHERE sms_phone = #{smsPhone,jdbcType=CHAR}
+		<choose>
+			<when test='type !=null and type == "M"'>
+				AND date_format(send_end_time,'%Y-%m')=date_format(now(),'%Y-%m')
+			</when>
+			<when test='type !=null and type == "W"'>
+				AND YEARWEEK(date_format(send_end_time,'%Y-%m-%d')) = YEARWEEK(now())
+			</when>
+			<otherwise>
+				AND to_days(send_end_time) = to_days(now())
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

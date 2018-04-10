@@ -1,0 +1,59 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				
+				<div style="display: none;" class="layui-form-item">
+					<label class="layui-form-label">门店id</label>
+					<div class="layui-input-block">
+						<input type="text"  name="id" lay-verify="required" placeholder="门店id" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+			    <div class="layui-form-item">
+					<label class="layui-form-label">门店编号</label>
+					<div class="layui-input-block">
+						<input type="text" name="shopCode" lay-verify="required" placeholder="门店编号" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">公司编号</label>
+					<div class="layui-input-block">
+						<input type="text" name="companyCode" lay-verify="required" placeholder="公司编号" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			
+				<div class="layui-form-item">
+					<label class="layui-form-label">错误时间</label>
+					<div class="layui-input-block">
+						<input type="text" name="errorTime" lay-verify="required" placeholder="错误时间" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">错误详情</label>
+					<div class="layui-input-block">
+						<input type="text" name="errorDetail" lay-verify="required" placeholder="错误详情" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">解决状态</label>
+					<div class="layui-input-block">
+						 <select lay-verify="required"  name="resolveStatus">
+								 <option value='Y'>已解决</option>
+								 <option value='N'>未解决</option>
+						 </select>
+					</div> 
+				</div>
+				
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">解决备注</label>
+					<div class="layui-input-block">
+						<textarea class="layui-textarea layui-hide" name="resolveRemark"  id="description_editor"></textarea>
+					</div>
+				</div>
+ 
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

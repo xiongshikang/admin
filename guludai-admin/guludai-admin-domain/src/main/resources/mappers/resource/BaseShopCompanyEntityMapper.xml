@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.dataway.dao.BaseShopCompanyEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.dataway.entity.BaseShopCompanyEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="company_name" jdbcType="CHAR" property="companyName" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="phone" jdbcType="CHAR" property="phone" />
+		<result column="mail" jdbcType="VARCHAR" property="mail" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, company_code, company_name, address, phone, mail, create_time, update_time, version,
+		data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_shop_company
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from base_shop_company
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopCompanyEntity">
+		insert into base_shop_company (id, company_code, company_name,
+		address, phone, mail,
+		create_time, update_time, version,
+		data_status, disk_status)
+		values (#{id,jdbcType=BIGINT}, #{companyCode,jdbcType=CHAR}, #{companyName,jdbcType=CHAR},
+		#{address,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{mail,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopCompanyEntity">
+		insert into base_shop_company
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="companyName != null">
+				company_name,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="mail != null">
+				mail,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="companyName != null">
+				#{companyName,jdbcType=CHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=CHAR},
+			</if>
+			<if test="mail != null">
+				#{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopCompanyEntity">
+		update base_shop_company
+		<set>
+			<if test="companyCode != null">
+				company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName,jdbcType=CHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=CHAR},
+			</if>
+			<if test="mail != null">
+				mail = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopCompanyEntity">
+		update base_shop_company
+		set company_code = #{companyCode,jdbcType=CHAR},
+		company_name = #{companyName,jdbcType=CHAR},
+		address = #{address,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=CHAR},
+		mail = #{mail,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 查询所有公司 -->
+	<select id="selectCompanyAll"  resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from base_shop_company c
+		 where c.data_status = 'Y' AND c.data_status = 'Y'
+	</select>
+	<!-- 分页查询公司信息 -->
+	<select id="selectBaseShopCompanyEntityPage" parameterType="cn.guludai.admin.web.resource.request.BaseShopCompanyReq" resultMap="BaseResultMap">
+		SELECT  
+				<include refid="Base_Column_List" />
+		 FROM base_shop_company  WHERE 
+		  data_status = 'Y' AND disk_status = 'Y'
+		 <if test="companyName!=null and companyName!='' ">
+		 	and company_name = #{companyName}
+		 </if>
+		 <if test="limit != null and limit != '' ">
+				limit  #{limit} OFFSET #{offset}
+		 </if> 
+	</select>
+	<!-- 分页总数 -->
+	<select id="selectBaseShopCompanyEntityPageCount" parameterType="cn.guludai.admin.web.resource.request.BaseShopCompanyReq" resultType="java.lang.Integer">
+		SELECT  
+				count(1)
+		 FROM base_shop_company  WHERE 
+		  data_status = 'Y' AND disk_status = 'Y'
+		 <if test="companyName!=null and companyName!='' ">
+		 	and company_name = #{companyName}
+		 </if>
+	</select>
+	<!-- 更新 -->
+	<update id="updateBaseShopCompanyEntity" >
+		UPDATE base_shop_company 
+		<set>
+			<if test="companyName != null and companyName!='' ">
+				company_name = #{companyName,jdbcType=CHAR},
+			</if>
+			<if test="address != null and address!=''">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null and phone!=''">
+				phone = #{phone,jdbcType=CHAR},
+			</if>
+			<if test="mail != null and mail!='' ">
+				mail = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime == null">
+				update_time = NOW(),
+			</if>
+			<if test="version == null">
+				version = version+1,
+			</if>
+		</set>
+		where company_code = #{companyCode}
+	</update>
+	
+	<!-- 查询 -->
+	<select id="selectBaseShopCompanyEntityByShopCompanyCode" resultMap="BaseResultMap" >
+		 SELECT  
+		  <include refid="Base_Column_List" />
+		  FROM base_shop_company WHERE company_code = #{companyCode}
+	</select>
+	<!-- 通过公司编号逻辑删除作公司信息 -->
+	<select id="deleteBaseShopCompanyEntityByShopCompanyCode" >
+		UPDATE base_shop_company p SET 
+		p.update_time = NOW() ,
+		p.version = p.version +1, 
+		p.data_status = 'N'
+		WHERE p.company_code = #{companyCode}
+	</select>
+
+</mapper>

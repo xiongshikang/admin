@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.app.dao.AppUserEntityMapper">
+
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.app.entity.AppUserEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="account" jdbcType="CHAR" property="account" />
+		<result column="mobile" jdbcType="CHAR" property="mobile" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="salt" jdbcType="VARCHAR" property="salt" />
+		<result column="status" jdbcType="CHAR" property="status" />
+		<result column="category" jdbcType="CHAR" property="category" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="wechat" jdbcType="VARCHAR" property="wechat" />
+		<result column="version" jdbcType="CHAR" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, account, mobile, password, salt, status, category, email, name, wechat, version,
+		create_time, update_time, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from app_user
+		where account = #{account,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from app_user
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.app.entity.AppUserEntity">
+		insert into app_user (id, account, mobile,
+		password, salt, status,
+		category, email, name,
+		wechat, version, create_time,
+		update_time, data_status, disk_status
+		)
+		values (#{id,jdbcType=BIGINT}, #{account,jdbcType=CHAR}, #{mobile,jdbcType=CHAR},
+		#{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+		#{category,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{wechat,jdbcType=VARCHAR}, #{version,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.app.entity.AppUserEntity">
+		insert into app_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="account != null">
+				account,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="salt != null">
+				salt,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="category != null">
+				category,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="wechat != null">
+				wechat,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="account != null">
+				#{account,jdbcType=CHAR},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=CHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null">
+				#{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=CHAR},
+			</if>
+			<if test="category != null">
+				#{category,jdbcType=CHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="wechat != null">
+				#{wechat,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.app.entity.AppUserEntity">
+		update app_user
+		<set>
+			<if test="account != null">
+				account = #{account,jdbcType=CHAR},
+			</if>
+			<if test="mobile != null">
+				mobile = #{mobile,jdbcType=CHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null">
+				salt = #{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=CHAR},
+			</if>
+			<if test="category != null">
+				category = #{category,jdbcType=CHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="wechat != null">
+				wechat = #{wechat,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where account = #{account,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.app.entity.AppUserEntity">
+		update app_user
+		set account = #{account,jdbcType=CHAR},
+		mobile = #{mobile,jdbcType=CHAR},
+		password = #{password,jdbcType=VARCHAR},
+		salt = #{salt,jdbcType=VARCHAR},
+		status = #{status,jdbcType=CHAR},
+		category = #{category,jdbcType=CHAR},
+		email = #{email,jdbcType=VARCHAR},
+		name = #{name,jdbcType=VARCHAR},
+		wechat = #{wechat,jdbcType=VARCHAR},
+		version = #{version,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<select id="selectByCondition" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List"/>
+		FROM app_user
+		<include refid="whereParam" />
+	</select>
+
+	<select id="selectByConditionByPing" resultMap="BaseResultMap" parameterType="cn.guludai.admin.web.request.AppUserReq">
+		SELECT
+		 *
+		FROM app_user
+		<include refid="whereParam" />
+		<if test="limit != null and limit != '' ">
+			limit #{limit} OFFSET #{offset}
+		</if>
+	</select>
+
+	<select id="selectByConditionNumByPing" resultType="java.lang.Integer" >
+		SELECT
+		count(*) AS  num
+		FROM app_user
+		<include refid="whereParam" />
+	</select>
+	<sql id="whereParam">
+		<where>
+			<!--<if test="accountIds != null">-->
+				<!--account IN-->
+				<!--<foreach collection="accountIds" item="id" open="(" separator="," close=")">-->
+					<!--#{id}-->
+				<!--</foreach>-->
+			<!--</if>-->
+			<if test="account != null  and account != ''">AND account = #{account}</if>
+			<if test="mobile != null and mobile != ''">AND mobile = #{mobile}</if>
+			<if test="password != null and password != ''">AND password = #{password}</if>
+			<if test="category != null and category != ''">AND category = #{category}</if>
+			<if test="email != null and email != ''">AND email = #{email}</if>
+			<if test="name != null and name != ''">AND name = #{name}</if>
+			<if test="wechat != null and wechat != ''">AND wechat = #{wechat}</if>
+			<if test="version != null and version != ''">AND version = #{version}</if>
+			<if test="createTime != null and createTime != ''">AND create_time = #{createTime}</if>
+			<if test="updateTime != null and updateTime != ''">AND update_time = #{updateTime}</if>
+			<if test="dataStatus != null and dataStatus != ''">AND data_status = #{dataStatus}</if>
+			<if test="diskStatus != null and diskStatus != ''">AND disk_status = #{diskStatus}</if>
+		</where>
+	</sql>
+
+</mapper>

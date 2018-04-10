@@ -1,0 +1,120 @@
+<script type="text/javascript" src="static/plugins/avalon/avalon.js"></script>
+<script type="text/javascript" src="static/admin/license/licenseavalon.js"></script>
+		<div style="margin: 15px;" ms-controller="licenseavalon">
+			<form class="layui-form" action="">
+				<div class="layui-form-item">
+					<label class="layui-form-label">erp厂家</label>
+					<div class="layui-input-block">
+						 <div class="layui-input-inline">
+							<select lay-verify="required" lay-filter="erpFactoryCode" name="erpFactoryCode">
+								 <option value=''>请选择erp</option>
+							</select>
+						</div>
+						<div class="layui-input-inline">
+							<select lay-verify="required" lay-filter="erpVersionCode" name="erpVersionCode">
+								<option value=''>请选择erp版本</option>
+							</select>
+						</div>
+					</div> 
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">公司</label>
+					<div class="layui-input-block">
+						 <div class="layui-input-inline">
+							<select lay-verify="required" lay-filter="companyCode" name="companyCode">
+								<option value="">请选择公司</option>
+							</select>
+						</div>
+						<div  class="layui-input-inline">
+							<select lay-verify="required" lay-filter="shopCode" name="shopCode">
+								<option value="">请选择门店</option>
+							</select>
+						</div>
+					</div> 
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">有效期</label>
+					<div class="layui-input-block">
+						<div class="layui-input-inline">
+							<input type="text" lay-verify="required" name="expireTime" id="date"  placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})"> 
+						</div>
+					</div>
+				</div>
+			    <div class="layui-form">
+					<table class="layui-table">
+						<colgroup>
+							<col width="90%">
+							<col width="10%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>添加数据链接信息</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr ms-repeat="dbInfo">
+							 	<td>
+									<div class="layui-form-item">
+										<label class="layui-form-label">ip</label>
+										<div class="layui-input-block">
+											<div class="layui-input-inline">
+												<input type="text"  name="dbIp" lay-verify="required" placeholder="数据库ip" autocomplete="off" class="layui-input">
+											</div>
+											<div class="layui-input-inline">
+												<input type="text" name="dbPost" lay-verify="required" placeholder="数据库端口号" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+									</div>
+									
+									<div class="layui-form-item">
+										<label class="layui-form-label">库名</label>
+										<div class="layui-input-block">
+											<div class="layui-input-inline">
+												<input type="text" name="dbName" lay-verify="required" placeholder="数据库名" autocomplete="off" class="layui-input">
+											</div>
+											<div class="layui-input-inline">
+												<input type="text" name="dbUsername" lay-verify="required" placeholder="数据库用户名" autocomplete="off" class="layui-input">
+											</div>
+										</div>
+									</div>
+									 
+									<div class="layui-form-item">
+										<label class="layui-form-label">密码</label>
+										<div class="layui-input-block">
+											<div class="layui-input-inline">
+												<input type="password" name="dbPassword" lay-verify="required" placeholder="数据库密码" autocomplete="off" class="layui-input">
+											</div>
+											<div class="layui-input-inline">
+													 <select lay-verify="required"  name="dbType">
+													 		<option value=''>数据库类型</option>
+															 <option value='mysql'>mysql</option>
+															 <option value='oracle'>oracle</option>
+															 <option value='sqlserver'>sqlserver</option>
+															 <option value='postgresql'>postgresql</option>
+													 </select>
+											</div>
+										</div>	 
+									</div>
+						    	</td>
+						    	<td>
+						    		  <span class="layui-btn layui-btn-small" ms-click="removeFn($index)">
+							            <i class="layui-icon">&#xe640;</i>
+							        </span>
+						    	</td>
+						    </tr>
+						</tbody>
+					</table>
+				</div>
+			    
+			    <div class="layui-btn-group">
+							        <span class="layui-btn layui-btn-small" ms-click="addFn">
+							            <i class="layui-icon">&#xe654;</i>
+							        </span>
+							      
+					</div>
+			    
+			    
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

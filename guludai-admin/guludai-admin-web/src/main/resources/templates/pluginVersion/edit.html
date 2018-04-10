@@ -1,0 +1,85 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="/admin/web/pluginVersion/upload"  enctype="multipart/form-data"  method="post">
+				<input type="text" style="display: none;"  name="pluginCode" />
+				<div class="layui-form-item">
+					<label class="layui-form-label">erp厂家</label>
+					<div class="layui-input-block">
+						 <div class="layui-input-inline">
+							<select lay-verify="required" lay-filter="erpFactoryCode" name="erpFactoryCode">
+								 <option value=''>请选择erp</option>
+							</select>
+						</div>
+						<div class="layui-input-inline">
+							<select lay-verify="required" lay-filter="erpVersionCode" name="erpVersionCode">
+								<option value=''>请选择erp版本</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">插件名称</label>
+					<div class="layui-input-block">
+						<input type="text" name="pluginName" lay-verify="required" placeholder="插件名称" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">插件版本</label>
+					<div class="layui-input-block">
+						<input type="text" name="pluginVersion" lay-verify="required" placeholder="插件版本" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">插件是否可升级</label>
+					<div class="layui-input-block">
+						 <select lay-verify="required"  name="pluginStatus">
+								 <option value='Y'>启用</option>
+								 <option value='N'>不启用</option>
+						 </select>
+					</div>
+				</div>
+
+				<!--<div class="layui-form-item">-->
+					<!--<label class="layui-form-label">插件是否可升级</label>-->
+					<!--<div class="layui-input-block">-->
+						<!--<select lay-verify="required"  name="type">-->
+							<!--<option value='1'>基础插件包</option>-->
+							<!--<option value='0'>业务插件包</option>-->
+						<!--</select>-->
+					<!--</div>-->
+				<!--</div>-->
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">上传插件</label>
+					<div class="layui-input-block">
+						<div class="layui-box layui-upload-button layui-input-inline">
+							<input type="file" id="downloadFile" name="downloadFile" lay-verify="required" autocomplete="off" class="layui-upload-file layui-input" onchange="showDownloadUrl(this.files)">
+							<span class="layui-upload-icon"><i class="layui-icon"></i>上传插件</span>
+							<span></span>
+						</div>
+						<div class="layui-input-inline">
+							<input style="width: 400px;" type="text" readonly name="downloadUrl"  lay-verify="required"  autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+				</div>
+				<!--<div class="layui-form-item">-->
+					<!--<label class="layui-form-label">插件地址</label>-->
+					<!--<div class="layui-input-block">-->
+						<!--<input type="text" name="downloadUrl" lay-verify="required" placeholder="插件地址" autocomplete="off" class="layui-input">-->
+					<!--</div>-->
+				<!--</div>-->
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">插件版本描述</label>
+					<div class="layui-input-block">
+						<textarea class="layui-textarea layui-hide" name="description"  id="description_editor"></textarea>
+					</div>
+				</div>
+
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

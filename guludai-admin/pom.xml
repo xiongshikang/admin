@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cn.guludai.business.admin</groupId>
+	<artifactId>guludai-admin</artifactId>
+	<packaging>pom</packaging>
+	<name>GULUDAI-ADMIN</name>
+	<parent>
+		<groupId>cn.guludai.container</groupId>
+		<artifactId>guludai-container</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<properties>
+		<admin.version>0.0.1-SNAPSHOT</admin.version>
+	</properties>
+	<modules>
+		<module>guludai-admin-api</module>
+		<module>guludai-admin-common</module>
+		<module>guludai-admin-domain</module>
+		<module>guludai-admin-service-app</module>
+		<module>guludai-admin-service-common</module>
+		<module>guludai-admin-service-dataway</module>
+		<module>guludai-admin-service-resource</module>
+		<module>guludai-admin-web</module>
+	</modules>
+</project>

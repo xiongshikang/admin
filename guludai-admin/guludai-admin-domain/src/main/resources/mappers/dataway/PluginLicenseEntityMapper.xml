@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.resource.dao.PluginLicenseEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="license_code" jdbcType="CHAR" property="licenseCode" />
+		<result column="license_idcard" jdbcType="CHAR" property="licenseIdcard" />
+		<result column="license_status" jdbcType="CHAR" property="licenseStatus" />
+		<result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+		<result column="used_count" jdbcType="INTEGER" property="usedCount" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="erp_factory_code" jdbcType="CHAR" property="erpFactoryCode" />
+		<result column="erp_version_code" jdbcType="CHAR" property="erpVersionCode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+		<result column="license_upload" jdbcType="CHAR" property="licenseUpload" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, license_code, license_idcard, license_status, expire_time, used_count, shop_code,
+		company_code, erp_factory_code, erp_version_code, create_time, update_time, version,
+		data_status, disk_status,license_upload
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_license
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from plugin_license
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity">
+		insert into plugin_license (id, license_code, license_idcard,
+		license_status, expire_time, used_count,
+		shop_code, company_code, erp_factory_code,
+		erp_version_code, create_time, update_time,
+		version, data_status, disk_status,license_upload
+		)
+		values (#{id,jdbcType=BIGINT}, #{licenseCode,jdbcType=CHAR}, #{licenseIdcard,jdbcType=CHAR},
+		#{licenseStatus,jdbcType=CHAR}, #{expireTime,jdbcType=TIMESTAMP}, #{usedCount,jdbcType=INTEGER},
+		#{shopCode,jdbcType=CHAR}, #{companyCode,jdbcType=CHAR}, #{erpFactoryCode,jdbcType=CHAR},
+		#{erpVersionCode,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR},#{licenseUpload,jdbcType=CHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity">
+		insert into plugin_license
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="licenseCode != null">
+				license_code,
+			</if>
+			<if test="licenseIdcard != null">
+				license_idcard,
+			</if>
+			<if test="licenseStatus != null">
+				license_status,
+			</if>
+			<if test="expireTime != null">
+				expire_time,
+			</if>
+			<if test="usedCount != null">
+				used_count,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code,
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="licenseCode != null">
+				#{licenseCode,jdbcType=CHAR},
+			</if>
+			<if test="licenseIdcard != null">
+				#{licenseIdcard,jdbcType=CHAR},
+			</if>
+			<if test="licenseStatus != null">
+				#{licenseStatus,jdbcType=CHAR},
+			</if>
+			<if test="expireTime != null">
+				#{expireTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usedCount != null">
+				#{usedCount,jdbcType=INTEGER},
+			</if>
+			<if test="shopCode != null">
+				#{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				#{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				#{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity">
+		update plugin_license
+		<set>
+			<if test="licenseCode != null">
+				license_upload = #{licenseUpload,jdbcType=CHAR},
+			</if>
+			<if test="licenseStatus != null">
+				license_status = #{licenseStatus,jdbcType=CHAR},
+			</if>
+			<if test="expireTime != null">
+				expire_time = #{expireTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usedCount != null">
+				used_count = #{usedCount,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime == null">
+				update_time = NOW(),
+			</if>
+			<if test="version == null">
+				version = version+1,
+			</if>
+		</set>
+		where license_code = #{licenseCode}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity">
+		update plugin_license
+		set license_code = #{licenseCode,jdbcType=CHAR},
+		license_idcard = #{licenseIdcard,jdbcType=CHAR},
+		license_status = #{licenseStatus,jdbcType=CHAR},
+		expire_time = #{expireTime,jdbcType=TIMESTAMP},
+		used_count = #{usedCount,jdbcType=INTEGER},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		company_code = #{companyCode,jdbcType=CHAR},
+		erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+		erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 条件查找注册码信息 -->
+	<select id="selectPluginLicense" parameterType="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_license
+		where  
+				data_status = 'Y'
+				and disk_status = 'Y'
+		   <if test="licenseCode != null and licenseCode!='' ">
+			   and	license_code = #{licenseCode,jdbcType=CHAR}
+			</if>
+			<if test="licenseIdcard != null and licenseIdcard!='' ">
+			   and	license_idcard = #{licenseIdcard,jdbcType=CHAR}
+			</if>
+			<if test="licenseStatus != null and licenseStatus!='' ">
+			   and license_status = #{licenseStatus,jdbcType=CHAR}
+			</if>
+			<if test="expireTime != null and expireTime!='' ">
+			   and expire_time = #{expireTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="usedCount != null and usedCount!='' ">
+				and used_count = #{usedCount,jdbcType=INTEGER}
+			</if>
+			<if test="shopCode != null and shopCode!='' ">
+				and shop_code = #{shopCode,jdbcType=CHAR}
+			</if>
+			<if test="companyCode != null and companyCode!='' ">
+				and company_code = #{companyCode,jdbcType=CHAR}
+			</if>
+			<if test="erpFactoryCode != null and erpFactoryCode!='' ">
+				and erp_factory_code = #{erpFactoryCode,jdbcType=CHAR}
+			</if>
+			<if test="erpVersionCode != null and erpVersionCode!='' ">
+				and erp_version_code = #{erpVersionCode,jdbcType=CHAR}
+			</if>
+			<if test="limit != null and limit != '' ">
+				order by create_time desc 
+				limit  #{limit} OFFSET #{offset}
+		    </if>
+			
+	</select>
+	
+	<!-- 条件查找注册码信息 总数-->
+	<select id="selectPluginLicenseCount" parameterType="cn.guludai.admin.web.request.PluginLicenseReq" resultType="java.lang.Long">
+		select
+		count(1)
+		from plugin_license
+		where  
+		        data_status = 'Y'
+				and disk_status = 'Y'
+		   <if test="licenseCode != null and licenseCode!='' ">
+			   and	license_code = #{licenseCode,jdbcType=CHAR}
+			</if>
+			<if test="licenseIdcard != null and licenseIdcard!='' ">
+			   and	license_idcard = #{licenseIdcard,jdbcType=CHAR}
+			</if>
+			<if test="licenseStatus != null and licenseStatus!='' ">
+			   and license_status = #{licenseStatus,jdbcType=CHAR}
+			</if>
+			<if test="expireTime != null and expireTime!='' ">
+			   and expire_time = #{expireTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="usedCount != null and usedCount!='' ">
+				and used_count = #{usedCount,jdbcType=INTEGER}
+			</if>
+			<if test="shopCode != null and shopCode!='' ">
+				and shop_code = #{shopCode,jdbcType=CHAR}
+			</if>
+			<if test="companyCode != null and companyCode!='' ">
+				and company_code = #{companyCode,jdbcType=CHAR}
+			</if>
+			<if test="erpFactoryCode != null and erpFactoryCode!='' ">
+				and erp_factory_code = #{erpFactoryCode,jdbcType=CHAR}
+			</if>
+			<if test="erpVersionCode != null and erpVersionCode!='' ">
+				and erp_version_code = #{erpVersionCode,jdbcType=CHAR}
+			</if>	
+	</select>
+	
+	<update id="updateLicenseInfoByLicenseCode" parameterType="cn.guludai.admin.domain.resource.entity.PluginLicenseEntity">
+		update plugin_license
+		<set>
+			<if test="licenseStatus != null">
+				license_status = #{licenseStatus,jdbcType=CHAR},
+			</if>
+			<if test="expireTime != null">
+				expire_time = #{expireTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="usedCount != null">
+				used_count = #{usedCount,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version == null">
+				version = version + 1 , update_time = NOW(),
+			</if> 
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="licenseUpload!=null">
+				license_upload = #{licenseUpload,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where license_code = #{licenseCode}
+	</update>
+	<!-- 通过编号查找注册信息数据 -->
+	<select id="selectLicenseByLicenseCode" resultMap="BaseResultMap" >
+		 SELECT 
+		 	<include refid="Base_Column_List" />
+		  FROM plugin_license p WHERE p.license_code = #{licenseCode}
+	</select>
+	
+	<!-- 逻辑册除注册信息 -->
+	<update id="deleteLicenseInfoByShopCode"  >
+		UPDATE plugin_license p SET 
+		p.update_time = NOW() ,
+		p.version = p.version +1, 
+		p.data_status = 'N'
+		WHERE p.license_code= #{licenseCode}
+	</update>
+
+
+</mapper>

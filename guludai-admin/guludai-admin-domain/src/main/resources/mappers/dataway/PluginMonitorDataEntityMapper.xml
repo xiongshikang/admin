@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.resource.dao.PluginMonitorDataEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.resource.entity.PluginMonitorDataEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="monitor_table" jdbcType="VARCHAR" property="monitorTable" />
+		<result column="monitor_time" jdbcType="TIMESTAMP" property="monitorTime" />
+		<result column="plugin_count" jdbcType="BIGINT" property="pluginCount" />
+		<result column="platform_count" jdbcType="BIGINT" property="platformCount" />
+		<result column="plugin_idcard" jdbcType="CHAR" property="pluginIdcard" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, monitor_table, monitor_time, plugin_count, platform_count, plugin_idcard, shop_code,
+		company_code, create_time, update_time, version, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_monitor_data
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from plugin_monitor_data
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.resource.entity.PluginMonitorDataEntity">
+		insert into plugin_monitor_data (id, monitor_table, monitor_time,
+		plugin_count, platform_count, plugin_idcard,
+		shop_code, company_code, create_time,
+		update_time, version, data_status,
+		disk_status)
+		values (#{id,jdbcType=BIGINT}, #{monitorTable,jdbcType=VARCHAR}, #{monitorTime,jdbcType=TIMESTAMP},
+		#{pluginCount,jdbcType=BIGINT}, #{platformCount,jdbcType=BIGINT}, #{pluginIdcard,jdbcType=CHAR},
+		#{shopCode,jdbcType=CHAR}, #{companyCode,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=CHAR},
+		#{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginMonitorDataEntity">
+		insert into plugin_monitor_data
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="monitorTable != null">
+				monitor_table,
+			</if>
+			<if test="monitorTime != null">
+				monitor_time,
+			</if>
+			<if test="pluginCount != null">
+				plugin_count,
+			</if>
+			<if test="platformCount != null">
+				platform_count,
+			</if>
+			<if test="pluginIdcard != null">
+				plugin_idcard,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="monitorTable != null">
+				#{monitorTable,jdbcType=VARCHAR},
+			</if>
+			<if test="monitorTime != null">
+				#{monitorTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pluginCount != null">
+				#{pluginCount,jdbcType=BIGINT},
+			</if>
+			<if test="platformCount != null">
+				#{platformCount,jdbcType=BIGINT},
+			</if>
+			<if test="pluginIdcard != null">
+				#{pluginIdcard,jdbcType=CHAR},
+			</if>
+			<if test="shopCode != null">
+				#{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginMonitorDataEntity">
+		update plugin_monitor_data
+		<set>
+			<if test="monitorTable != null">
+				monitor_table = #{monitorTable,jdbcType=VARCHAR},
+			</if>
+			<if test="monitorTime != null">
+				monitor_time = #{monitorTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pluginCount != null">
+				plugin_count = #{pluginCount,jdbcType=BIGINT},
+			</if>
+			<if test="platformCount != null">
+				platform_count = #{platformCount,jdbcType=BIGINT},
+			</if>
+			<if test="pluginIdcard != null">
+				plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+			</if>
+			<if test="shopCode != null">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.resource.entity.PluginMonitorDataEntity">
+		update plugin_monitor_data
+		set monitor_table = #{monitorTable,jdbcType=VARCHAR},
+		monitor_time = #{monitorTime,jdbcType=TIMESTAMP},
+		plugin_count = #{pluginCount,jdbcType=BIGINT},
+		platform_count = #{platformCount,jdbcType=BIGINT},
+		plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		company_code = #{companyCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 查询插件数据监控数据 -->
+	<select id="selectPluginMonitorDataList" parameterType="cn.guludai.admin.web.request.PluginMonitorDataReq" resultMap="BaseResultMap" >
+		SELECT
+			*
+		 FROM plugin_monitor_data
+		   WHERE
+		    data_status = 'Y'
+			and disk_status = 'Y'
+			<if test="monitorTable != null and monitorTable!='' ">
+				and monitor_table = #{monitorTable,jdbcType=VARCHAR}
+			</if>
+			<if test="monitorTime != null and monitorTime!='' ">
+				and monitor_time = #{monitorTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="shopCode != null and shopCode!='' ">
+				and shop_code = #{shopCode,jdbcType=CHAR}
+			</if>
+			<if test="companyCode != null and companyCode !='' ">
+				and company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+ 			<if test="limit != null and limit != '' ">
+				limit  #{limit} OFFSET #{offset}
+		    </if>
+	</select>
+
+	<!-- 查询插件数据监控数据总数 -->
+	<select id="selectPluginMonitorDataListCount" parameterType="cn.guludai.admin.web.request.PluginMonitorDataReq" resultType="java.lang.Integer" >
+		SELECT
+			count(1)
+		 FROM plugin_monitor_data
+		   WHERE
+		    data_status = 'Y'
+			and disk_status = 'Y'
+			<if test="monitorTable != null and monitorTable!='' ">
+				and monitor_table = #{monitorTable,jdbcType=VARCHAR}
+			</if>
+			<if test="monitorTime != null and monitorTime!='' ">
+				and monitor_time = #{monitorTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="shopCode != null and shopCode!='' ">
+				and shop_code = #{shopCode,jdbcType=CHAR}
+			</if>
+			<if test="companyCode != null and companyCode !='' ">
+				and company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+	</select>
+</mapper>

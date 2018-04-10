@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.resource.dao.PluginRunningLogEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="error_time" jdbcType="TIMESTAMP" property="errorTime" />
+		<result column="resolve_status" jdbcType="CHAR" property="resolveStatus" />
+		<result column="plugin_idcard" jdbcType="CHAR" property="pluginIdcard" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntityWithBLOBs">
+		<result column="error_detail" jdbcType="LONGVARCHAR" property="errorDetail" />
+		<result column="resolve_remark" jdbcType="LONGVARCHAR" property="resolveRemark" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, error_time, resolve_status, plugin_idcard, shop_code, company_code, create_time,
+		update_time, version, data_status, disk_status
+	</sql>
+	<sql id="Blob_Column_List">
+		error_detail, resolve_remark
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from plugin_running_log
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from plugin_running_log
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntityWithBLOBs">
+		insert into plugin_running_log (id, error_time, resolve_status,
+		plugin_idcard, shop_code, company_code,
+		create_time, update_time, version,
+		data_status, disk_status, error_detail,
+		resolve_remark)
+		values (#{id,jdbcType=BIGINT}, #{errorTime,jdbcType=TIMESTAMP}, #{resolveStatus,jdbcType=CHAR},
+		#{pluginIdcard,jdbcType=CHAR}, #{shopCode,jdbcType=CHAR}, #{companyCode,jdbcType=CHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR}, #{errorDetail,jdbcType=LONGVARCHAR},
+		#{resolveRemark,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntityWithBLOBs">
+		insert into plugin_running_log
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="errorTime != null">
+				error_time,
+			</if>
+			<if test="resolveStatus != null">
+				resolve_status,
+			</if>
+			<if test="pluginIdcard != null">
+				plugin_idcard,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+			<if test="errorDetail != null">
+				error_detail,
+			</if>
+			<if test="resolveRemark != null">
+				resolve_remark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="errorTime != null">
+				#{errorTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="resolveStatus != null">
+				#{resolveStatus,jdbcType=CHAR},
+			</if>
+			<if test="pluginIdcard != null">
+				#{pluginIdcard,jdbcType=CHAR},
+			</if>
+			<if test="shopCode != null">
+				#{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="errorDetail != null">
+				#{errorDetail,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="resolveRemark != null">
+				#{resolveRemark,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntityWithBLOBs">
+		update plugin_running_log
+		<set>
+			<if test="errorTime != null">
+				error_time = #{errorTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="resolveStatus != null">
+				resolve_status = #{resolveStatus,jdbcType=CHAR},
+			</if>
+			<if test="pluginIdcard != null">
+				plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+			</if>
+			<if test="shopCode != null">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="errorDetail != null">
+				error_detail = #{errorDetail,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="resolveRemark != null">
+				resolve_remark = #{resolveRemark,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntityWithBLOBs">
+		update plugin_running_log
+		set error_time = #{errorTime,jdbcType=TIMESTAMP},
+		resolve_status = #{resolveStatus,jdbcType=CHAR},
+		plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		company_code = #{companyCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR},
+		error_detail = #{errorDetail,jdbcType=LONGVARCHAR},
+		resolve_remark = #{resolveRemark,jdbcType=LONGVARCHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningLogEntity">
+		update plugin_running_log
+		set error_time = #{errorTime,jdbcType=TIMESTAMP},
+		resolve_status = #{resolveStatus,jdbcType=CHAR},
+		plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		company_code = #{companyCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 多条件查找日志数据 -->
+	<select id="selectRunningLogList" parameterType="cn.guludai.admin.web.request.PluginRunningLogReq" resultMap="ResultMapWithBLOBs" >
+		 SELECT 
+		 *
+		 FROM plugin_running_log 
+		 	where  
+				data_status = 'Y'
+				and disk_status = 'Y'
+		 <if test="endTime!=null and endTime!='' ">
+		 	and error_time <![CDATA[ <= ]]> #{endTime}
+		 </if>
+		 <if test="startTime!=null and startTime!='' ">
+		 	and error_time <![CDATA[ >= ]]> #{startTime}
+		 </if>
+		 <if test="resolveStatus!=null and resolveStatus!='' ">
+		 	and resolve_status = #{resolveStatus}
+		 </if>
+		 <if test="shopCode!=null and shopCode!='' ">
+		 	and shop_code = #{shopCode}
+		 </if>
+		  order by error_time desc
+		 <if test="limit != null and limit != '' ">
+				limit  #{limit} OFFSET #{offset}
+		</if>
+	</select>
+	<!-- 查询错误日志总数 -->
+	<select id="selectRunningLogCount" parameterType="cn.guludai.admin.web.request.PluginRunningLogReq" resultType="java.lang.Integer" >
+		 SELECT 
+		 count(1)
+		 FROM plugin_running_log 
+		 <if test="endTime!=null and endTime!='' ">
+		 	error_time <![CDATA[ <= ]]> #{endTime}
+		 </if>
+		 <if test="startTime!=null and startTime!='' ">
+		 	error_time <![CDATA[ >= ]]> #{startTime}
+		 </if>
+		 <if test="resolveStatus!=null and resolveStatus!='' ">
+		 	resolve_status = #{resolveStatus}
+		 </if>
+		 <if test="shopCode!=null and shopCode!='' ">
+		 	shop_code = #{shopCode}
+		 </if>
+	</select>
+	<!-- 通过id查询错误日志 -->
+	<update id="updateLongById" parameterType="cn.guludai.admin.web.request.PluginRunningLogReq" >
+		update plugin_running_log
+		set 
+		resolve_status = #{resolveStatus,jdbcType=CHAR},
+		update_time = NOW(),
+		resolve_remark = #{resolveRemark},
+		version = version + 1
+		where id = #{id}
+	</update>
+	
+</mapper>

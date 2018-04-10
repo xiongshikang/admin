@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.app.dao.AppVersionEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.app.entity.AppVersionEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="version_code" jdbcType="CHAR" property="versionCode" />
+		<result column="version_number" jdbcType="VARCHAR" property="versionNumber" />
+		<result column="version_order" jdbcType="INTEGER" property="versionOrder" />
+		<result column="version_status" jdbcType="CHAR" property="versionStatus" />
+		<result column="version_upgrade" jdbcType="CHAR" property="versionUpgrade" />
+		<result column="version_description" jdbcType="VARCHAR" property="versionDescription" />
+		<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+		<result column="download_platform" jdbcType="VARCHAR" property="downloadPlatform" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, version_code, version_number, version_order, version_status, version_upgrade,
+		version_description, download_url, download_platform, version, create_time, update_time,
+		data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from app_version
+		where version_code = #{versionCode,jdbcType=CHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from app_version
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.app.entity.AppVersionEntity">
+		insert into app_version (id, version_code, version_number,
+		version_order, version_status, version_upgrade,
+		version_description, download_url, download_platform,
+		version, create_time, update_time,
+		data_status, disk_status)
+		values (#{id,jdbcType=BIGINT}, #{versionCode,jdbcType=CHAR}, #{versionNumber,jdbcType=VARCHAR},
+		#{versionOrder,jdbcType=INTEGER}, #{versionStatus,jdbcType=CHAR}, #{versionUpgrade,jdbcType=CHAR},
+		#{versionDescription,jdbcType=VARCHAR}, #{downloadUrl,jdbcType=VARCHAR}, #{downloadPlatform,jdbcType=VARCHAR},
+		#{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.app.entity.AppVersionEntity">
+		insert into app_version
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="versionCode != null">
+				version_code,
+			</if>
+			<if test="versionNumber != null">
+				version_number,
+			</if>
+			<if test="versionOrder != null">
+				version_order,
+			</if>
+			<if test="versionStatus != null">
+				version_status,
+			</if>
+			<if test="versionUpgrade != null">
+				version_upgrade,
+			</if>
+			<if test="versionDescription != null">
+				version_description,
+			</if>
+			<if test="downloadUrl != null">
+				download_url,
+			</if>
+			<if test="downloadPlatform != null">
+				download_platform,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="versionCode != null">
+				#{versionCode,jdbcType=CHAR},
+			</if>
+			<if test="versionNumber != null">
+				#{versionNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="versionOrder != null">
+				#{versionOrder,jdbcType=INTEGER},
+			</if>
+			<if test="versionStatus != null">
+				#{versionStatus,jdbcType=CHAR},
+			</if>
+			<if test="versionUpgrade != null">
+				#{versionUpgrade,jdbcType=CHAR},
+			</if>
+			<if test="versionDescription != null">
+				#{versionDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="downloadUrl != null">
+				#{downloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="downloadPlatform != null">
+				#{downloadPlatform,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.app.entity.AppVersionEntity">
+		update app_version
+		<set>
+			<if test="versionCode != null">
+				version_code = #{versionCode,jdbcType=CHAR},
+			</if>
+			<if test="versionNumber != null">
+				version_number = #{versionNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="versionOrder != null">
+				version_order = #{versionOrder,jdbcType=INTEGER},
+			</if>
+			<if test="versionStatus != null">
+				version_status = #{versionStatus,jdbcType=CHAR},
+			</if>
+			<if test="versionUpgrade != null">
+				version_upgrade = #{versionUpgrade,jdbcType=CHAR},
+			</if>
+			<if test="versionDescription != null">
+				version_description = #{versionDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="downloadUrl != null">
+				download_url = #{downloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="downloadPlatform != null">
+				download_platform = #{downloadPlatform,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where version_code = #{versionCode,jdbcType=CHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.app.entity.AppVersionEntity">
+		update app_version
+		set version_code = #{versionCode,jdbcType=CHAR},
+		version_number = #{versionNumber,jdbcType=VARCHAR},
+		version_order = #{versionOrder,jdbcType=INTEGER},
+		version_status = #{versionStatus,jdbcType=CHAR},
+		version_upgrade = #{versionUpgrade,jdbcType=CHAR},
+		version_description = #{versionDescription,jdbcType=VARCHAR},
+		download_url = #{downloadUrl,jdbcType=VARCHAR},
+		download_platform = #{downloadPlatform,jdbcType=VARCHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<select id="selectByConditionByPing" parameterType="cn.guludai.admin.web.request.AppVersionReq" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from app_version
+		WHERE
+		data_status = 'Y'
+		AND disk_status = 'Y'
+		<include refid="whereParam" />
+		ORDER BY  create_time DESC
+		<if test="limit != null and limit != '' ">
+			limit #{limit} OFFSET #{offset}
+		</if>
+	</select>
+
+	<select id="selectByConditionNumByPing" parameterType="cn.guludai.admin.web.request.AppVersionReq" resultType="java.lang.Integer">
+		select
+			count(*)
+		from app_version
+		WHERE
+		data_status = 'Y'
+		AND disk_status = 'Y'
+		<include refid="whereParam" />
+
+	</select>
+
+	<select id="selectMaxVersionOrder" resultType="java.lang.Integer">
+		SELECT MAX(version_order ) AS num FROM app_version
+	</select>
+
+	<sql id="whereParam">
+			<if test="versionCode != null">
+				AND version_code = #{versionCode,jdbcType=CHAR}
+			</if>
+			<if test="versionNumber != null">
+				AND version_number = #{versionNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="versionOrder != null">
+				AND version_order = #{versionOrder,jdbcType=INTEGER}
+			</if>
+			<if test="versionStatus != null">
+				AND version_status = #{versionStatus,jdbcType=CHAR}
+			</if>
+			<if test="versionUpgrade != null">
+				AND version_upgrade = #{versionUpgrade,jdbcType=CHAR}
+			</if>
+			<if test="versionDescription != null">
+				AND version_description = #{versionDescription,jdbcType=VARCHAR}
+			</if>
+			<if test="downloadUrl != null">
+				AND download_url = #{downloadUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="downloadPlatform != null">
+				AND download_platform = #{downloadPlatform,jdbcType=VARCHAR}
+			</if>
+
+	</sql>
+	<!--&lt;!&ndash;APP最新的一条更新记录&ndash;&gt;-->
+	<!--<select id="selectNewApp" resultMap="BaseResultMap">-->
+		<!--SELECT-->
+		<!--<include refid="Base_Column_List" />-->
+		<!--FROM `app_version` WHERE data_status = 'Y' ORDER BY version_order DESC LIMIT 0 ,1-->
+	<!--</select>-->
+
+	<!--<select id="existenceUpgrade" resultType="java.lang.Integer">-->
+		<!--SELECT-->
+		<!--COUNT(*) AS existence-->
+		<!--FROM-->
+		<!--`app_version`-->
+		<!--WHERE-->
+		<!--version_order &gt; #{versionOrder}-->
+		<!--AND data_status = 'Y'-->
+		<!--AND version_upgrade = 'Y';-->
+	<!--</select>-->
+
+
+</mapper>

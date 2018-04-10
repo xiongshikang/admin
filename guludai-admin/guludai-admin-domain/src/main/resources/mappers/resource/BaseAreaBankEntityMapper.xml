@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.dataway.dao.BaseAreaBankEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.dataway.entity.BaseAreaBankEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="bank_no" jdbcType="CHAR" property="bankNo" />
+		<result column="bank_nick" jdbcType="VARCHAR" property="bankNick" />
+		<result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+		<result column="bank_suport" jdbcType="CHAR" property="bankSuport" />
+		<result column="bank_picture" jdbcType="VARCHAR" property="bankPicture" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, bank_no, bank_nick, bank_name, bank_suport, bank_picture, version, create_time,
+		update_time, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_bank
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from base_bank
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaBankEntity">
+		insert into base_bank (id, bank_no, bank_nick,
+		bank_name, bank_suport, bank_picture,
+		version, create_time, update_time,
+		data_status, disk_status)
+		values (#{id,jdbcType=BIGINT}, #{bankNo,jdbcType=CHAR}, #{bankNick,jdbcType=VARCHAR},
+		#{bankName,jdbcType=VARCHAR}, #{bankSuport,jdbcType=CHAR}, #{bankPicture,jdbcType=VARCHAR},
+		#{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaBankEntity">
+		insert into base_bank
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="bankNo != null">
+				bank_no,
+			</if>
+			<if test="bankNick != null">
+				bank_nick,
+			</if>
+			<if test="bankName != null">
+				bank_name,
+			</if>
+			<if test="bankSuport != null">
+				bank_suport,
+			</if>
+			<if test="bankPicture != null">
+				bank_picture,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="bankNo != null">
+				#{bankNo,jdbcType=CHAR},
+			</if>
+			<if test="bankNick != null">
+				#{bankNick,jdbcType=VARCHAR},
+			</if>
+			<if test="bankName != null">
+				#{bankName,jdbcType=VARCHAR},
+			</if>
+			<if test="bankSuport != null">
+				#{bankSuport,jdbcType=CHAR},
+			</if>
+			<if test="bankPicture != null">
+				#{bankPicture,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaBankEntity">
+		update base_bank
+		<set>
+			<if test="bankNo != null">
+				bank_no = #{bankNo,jdbcType=CHAR},
+			</if>
+			<if test="bankNick != null">
+				bank_nick = #{bankNick,jdbcType=VARCHAR},
+			</if>
+			<if test="bankName != null">
+				bank_name = #{bankName,jdbcType=VARCHAR},
+			</if>
+			<if test="bankSuport != null">
+				bank_suport = #{bankSuport,jdbcType=CHAR},
+			</if>
+			<if test="bankPicture != null">
+				bank_picture = #{bankPicture,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaBankEntity">
+		update base_bank
+		set bank_no = #{bankNo,jdbcType=CHAR},
+		bank_nick = #{bankNick,jdbcType=VARCHAR},
+		bank_name = #{bankName,jdbcType=VARCHAR},
+		bank_suport = #{bankSuport,jdbcType=CHAR},
+		bank_picture = #{bankPicture,jdbcType=VARCHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

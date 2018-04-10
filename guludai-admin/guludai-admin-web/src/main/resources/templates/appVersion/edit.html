@@ -1,0 +1,64 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form"   action="/admin/web/appVersion/add"  method="post" >
+				<div class="layui-form-item">
+					<label class="layui-form-label">APP版本号</label>
+					<div class="layui-input-block">
+						<input type="text" name="versionNumber" lay-verify="required" placeholder="APP版本号" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">版本启用状态</label>
+					<div class="layui-input-block">
+						<select lay-verify="required"  name="versionStatus">
+							<option value='Y'>启用</option>
+							<option value='N'>不启用</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">是否强制升级</label>
+					<div class="layui-input-block">
+						<select lay-verify="required"  name="versionUpgrade">
+							<option value='Y'>强制升级版</option>
+							<option value='N'>选择升级版</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">支持手机平台</label>
+					<div class="layui-input-block">
+						<select lay-verify="required"  name="downloadPlatform">
+							<option value='android'>安卓系统</option>
+							<option value='iphone'>IOS系统</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<label class="layui-form-label">上传APP安装包</label>
+					<div class="layui-input-block">
+						<div class="layui-box layui-upload-button layui-input-inline">
+							<input type="file" id="downloadFile" name="downloadFile" lay-verify="required" autocomplete="off" class="layui-upload-file layui-input" onchange="showDownloadUrl(this.files)">
+							<span class="layui-upload-icon"><i class="layui-icon"></i>上传插件</span>
+							<span></span>
+						</div>
+						<div class="layui-input-inline">
+							<input style="width: 300px;" type="text" readonly name="downloadPath"  lay-verify="required"  autocomplete="off" class="layui-input">
+						</div>
+
+					</div>
+				</div>
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">升级说明描述</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea" name="versionDescription"  id="versionDescription"></textarea>
+					</div>
+				</div>
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

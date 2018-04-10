@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.resource.dao.PluginUpgradeEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.resource.entity.PluginUpgradeEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="plugin_idcard" jdbcType="CHAR" property="pluginIdcard" />
+		<result column="plugin_code" jdbcType="CHAR" property="pluginCode" />
+		<result column="plugin_current_status" jdbcType="CHAR" property="pluginCurrentStatus" />
+		<result column="plugin_upgrade_status" jdbcType="CHAR" property="pluginUpgradeStatus" />
+		<result column="upgrade_stime" jdbcType="TIMESTAMP" property="upgradeStime" />
+		<result column="upgrade_etime" jdbcType="TIMESTAMP" property="upgradeEtime" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="erp_factory_code" jdbcType="CHAR" property="erpFactoryCode" />
+		<result column="erp_version_code" jdbcType="CHAR" property="erpVersionCode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, plugin_idcard, plugin_code, plugin_current_status, plugin_upgrade_status, upgrade_stime,
+		upgrade_etime, shop_code, company_code, erp_factory_code, erp_version_code, create_time,
+		update_time, version, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_upgrade
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from plugin_upgrade
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.resource.entity.PluginUpgradeEntity">
+		insert into plugin_upgrade (id, plugin_idcard, plugin_code,
+		plugin_current_status, plugin_upgrade_status, upgrade_stime,
+		upgrade_etime, shop_code, company_code,
+		erp_factory_code, erp_version_code, create_time,
+		update_time, version, data_status,
+		disk_status)
+		values (#{id,jdbcType=BIGINT}, #{pluginIdcard,jdbcType=CHAR}, #{pluginCode,jdbcType=CHAR},
+		#{pluginCurrentStatus,jdbcType=CHAR}, #{pluginUpgradeStatus,jdbcType=CHAR}, #{upgradeStime,jdbcType=TIMESTAMP},
+		#{upgradeEtime,jdbcType=TIMESTAMP}, #{shopCode,jdbcType=CHAR}, #{companyCode,jdbcType=CHAR},
+		#{erpFactoryCode,jdbcType=CHAR}, #{erpVersionCode,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=CHAR},
+		#{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginUpgradeEntity">
+		insert into plugin_upgrade
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="pluginIdcard != null">
+				plugin_idcard,
+			</if>
+			<if test="pluginCode != null">
+				plugin_code,
+			</if>
+			<if test="pluginCurrentStatus != null">
+				plugin_current_status,
+			</if>
+			<if test="pluginUpgradeStatus != null">
+				plugin_upgrade_status,
+			</if>
+			<if test="upgradeStime != null">
+				upgrade_stime,
+			</if>
+			<if test="upgradeEtime != null">
+				upgrade_etime,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code,
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="pluginIdcard != null">
+				#{pluginIdcard,jdbcType=CHAR},
+			</if>
+			<if test="pluginCode != null">
+				#{pluginCode,jdbcType=CHAR},
+			</if>
+			<if test="pluginCurrentStatus != null">
+				#{pluginCurrentStatus,jdbcType=CHAR},
+			</if>
+			<if test="pluginUpgradeStatus != null">
+				#{pluginUpgradeStatus,jdbcType=CHAR},
+			</if>
+			<if test="upgradeStime != null">
+				#{upgradeStime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="upgradeEtime != null">
+				#{upgradeEtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="shopCode != null">
+				#{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				#{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				#{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginUpgradeEntity">
+		update plugin_upgrade
+		<set>
+			<if test="pluginIdcard != null">
+				plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+			</if>
+			<if test="pluginCode != null">
+				plugin_code = #{pluginCode,jdbcType=CHAR},
+			</if>
+			<if test="pluginCurrentStatus != null">
+				plugin_current_status = #{pluginCurrentStatus,jdbcType=CHAR},
+			</if>
+			<if test="pluginUpgradeStatus != null">
+				plugin_upgrade_status = #{pluginUpgradeStatus,jdbcType=CHAR},
+			</if>
+			<if test="upgradeStime != null">
+				upgrade_stime = #{upgradeStime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="upgradeEtime != null">
+				upgrade_etime = #{upgradeEtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="shopCode != null">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.resource.entity.PluginUpgradeEntity">
+		update plugin_upgrade
+		set plugin_idcard = #{pluginIdcard,jdbcType=CHAR},
+		plugin_code = #{pluginCode,jdbcType=CHAR},
+		plugin_current_status = #{pluginCurrentStatus,jdbcType=CHAR},
+		plugin_upgrade_status = #{pluginUpgradeStatus,jdbcType=CHAR},
+		upgrade_stime = #{upgradeStime,jdbcType=TIMESTAMP},
+		upgrade_etime = #{upgradeEtime,jdbcType=TIMESTAMP},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		company_code = #{companyCode,jdbcType=CHAR},
+		erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+		erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

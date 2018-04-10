@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.dataway.dao.BaseShopErpEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="plugin_license_idcard" jdbcType="CHAR" property="pluginLicenseIdcard" />
+		<result column="erp_factory_code" jdbcType="CHAR" property="erpFactoryCode" />
+		<result column="erp_version_code" jdbcType="CHAR" property="erpVersionCode" />
+		<result column="data_salt" jdbcType="VARCHAR" property="dataSalt" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+		
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntityWithBLOBs">
+		<result column="data_public_key" jdbcType="LONGVARCHAR" property="dataPublicKey" />
+		<result column="data_private_key" jdbcType="LONGVARCHAR" property="dataPrivateKey" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, company_code, shop_code, plugin_license_idcard, erp_factory_code, erp_version_code, data_salt, create_time,
+		update_time, version, data_status, disk_status
+	</sql>
+	<sql id="Blob_Column_List">
+		data_public_key, data_private_key
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from base_shop_erp
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from base_shop_erp
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntityWithBLOBs">
+		insert into base_shop_erp (id, company_code, shop_code,plugin_license_idcard,
+		erp_factory_code, erp_version_code, data_salt,
+		create_time, update_time, version,
+		data_status, disk_status, data_public_key,
+		data_private_key)
+		values (#{id,jdbcType=BIGINT}, #{companyCode,jdbcType=CHAR}, #{shopCode,jdbcType=CHAR},#{pluginLicenseIdcard,jdbcType=CHAR},
+		#{erpFactoryCode,jdbcType=CHAR}, #{erpVersionCode,jdbcType=CHAR}, #{dataSalt,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR}, #{dataPublicKey,jdbcType=LONGVARCHAR},
+		#{dataPrivateKey,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntityWithBLOBs">
+		insert into base_shop_erp
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="pluginLicenseIdcard != null">
+				plugin_license_idcard,
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code,
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code,
+			</if>
+			<if test="dataSalt != null">
+				data_salt,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+			<if test="dataPublicKey != null">
+				data_public_key,
+			</if>
+			<if test="dataPrivateKey != null">
+				data_private_key,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="shopCode != null">
+				#{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="pluginLicenseIdcard != null">
+				#{pluginLicenseIdcard,jdbcType=CHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				#{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				#{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="dataSalt != null">
+				#{dataSalt,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="dataPublicKey != null">
+				#{dataPublicKey,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="dataPrivateKey != null">
+				#{dataPrivateKey,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntityWithBLOBs">
+		update base_shop_erp
+		<set>
+			<if test="companyCode != null">
+				company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="shopCode != null">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="dataSalt != null">
+				data_salt = #{dataSalt,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="dataPublicKey != null">
+				data_public_key = #{dataPublicKey,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="dataPrivateKey != null">
+				data_private_key = #{dataPrivateKey,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntityWithBLOBs">
+		update base_shop_erp
+		set company_code = #{companyCode,jdbcType=CHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+		erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+		data_salt = #{dataSalt,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR},
+		data_public_key = #{dataPublicKey,jdbcType=LONGVARCHAR},
+		data_private_key = #{dataPrivateKey,jdbcType=LONGVARCHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.dataway.entity.BaseShopErpEntity">
+		update base_shop_erp
+		set company_code = #{companyCode,jdbcType=CHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+		erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+		data_salt = #{dataSalt,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 通过门店编号查找全安信息数量 -->
+	<select id="selectBaseShopErpCountByShopCode"  resultType="java.lang.Integer">
+		SELECT count(1) FROM base_shop_erp e WHERE e.shop_code = #{shopCode} AND e.data_status = 'Y' and e.disk_status = 'Y'
+	</select>
+
+	<!--根据 erpFactoryCode ， erpVersionCode ， companyCode ， shopCode -->
+	<select id="getBaseShopErpNameOne" resultType="java.util.HashMap">
+		SELECT
+		bse.erp_factory_code AS erpFactoryCode,
+		bef.erp_factory_name AS erpFactoryName,
+		bse.erp_version_code AS erpVersionCode,
+		bev.erp_version_name AS erpVersionName,
+		bse.shop_code AS shopCode,
+		bs.shop_name AS shopName,
+		bse.company_code AS companyCode,
+		bsc.company_name AS companyName,
+		bse.data_salt AS dataSalt,
+		data_public_key AS dataPublicKey,
+		data_private_key AS dataPrivateKey
+		FROM
+		base_shop_erp bse
+		LEFT JOIN base_erp_factory bef ON bse.erp_factory_code = bef.erp_factory_code
+		LEFT JOIN base_erp_version bev ON bse.erp_version_code = bev.erp_version_code
+		LEFT JOIN base_shop bs ON bse.shop_code = bs.shop_code
+		LEFT JOIN base_shop_company bsc ON bse.company_code = bsc.company_code
+		where bse.plugin_license_idcard = #{pluginLicenseIdcard,jdbcType=CHAR}
+		AND bse.data_status = 'Y'
+		AND bse.disk_status = 'Y'
+	</select>
+</mapper>

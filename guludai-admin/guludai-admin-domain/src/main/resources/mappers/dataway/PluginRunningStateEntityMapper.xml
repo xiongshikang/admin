@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.resource.dao.PluginRunningStateEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.resource.entity.PluginRunningStateEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="state_code" jdbcType="CHAR" property="stateCode" />
+		<result column="plugin_idcard" jdbcType="CHAR" property="pluginIdcard" />
+		<result column="report_time" jdbcType="TIMESTAMP" property="reportTime" />
+		<result column="report_ip" jdbcType="VARCHAR" property="reportIp" />
+		<result column="report_imac" jdbcType="VARCHAR" property="reportImac" />
+		<result column="report_idisk" jdbcType="VARCHAR" property="reportIdisk" />
+		<result column="report_icpu" jdbcType="VARCHAR" property="reportIcpu" />
+		<result column="db_type" jdbcType="VARCHAR" property="dbType" />
+		<result column="db_ip" jdbcType="VARCHAR" property="dbIp" />
+		<result column="db_post" jdbcType="VARCHAR" property="dbPost" />
+		<result column="db_name" jdbcType="VARCHAR" property="dbName" />
+		<result column="db_username" jdbcType="VARCHAR" property="dbUsername" />
+		<result column="db_password" jdbcType="VARCHAR" property="dbPassword" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="company_code" jdbcType="CHAR" property="companyCode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id,state_code, plugin_idcard, report_time, report_ip, report_imac, report_idisk, report_icpu, db_type, db_ip,
+		db_post, db_name, db_username, db_password, shop_code, company_code, create_time,
+		update_time, version, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_running_state
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from plugin_running_state
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningStateEntity">
+		insert into plugin_running_state (id, state_code,plugin_idcard,report_time, report_ip,
+		report_imac, report_idisk, report_icpu,
+		db_type, db_ip, db_post,
+		db_name, db_username, db_password,
+		shop_code, company_code, create_time,
+		update_time, version, data_status,
+		disk_status)
+		values (#{id,jdbcType=BIGINT}, #{stateCode,jdbcType=CHAR},#{pluginIdcard,jdbcType=CHAR},
+		#{reportTime,jdbcType=TIMESTAMP}, #{reportIp,jdbcType=VARCHAR},
+		#{reportImac,jdbcType=VARCHAR}, #{reportIdisk,jdbcType=VARCHAR}, #{reportIcpu,jdbcType=VARCHAR},
+		#{dbType,jdbcType=VARCHAR}, #{dbIp,jdbcType=VARCHAR}, #{dbPost,jdbcType=VARCHAR},
+		#{dbName,jdbcType=VARCHAR}, #{dbUsername,jdbcType=VARCHAR}, #{dbPassword,jdbcType=VARCHAR},
+		#{shopCode,jdbcType=CHAR}, #{companyCode,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=CHAR},
+		#{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningStateEntity">
+		insert into plugin_running_state
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="reportTime != null">
+				report_time,
+			</if>
+			<if test="reportIp != null">
+				report_ip,
+			</if>
+			<if test="reportImac != null">
+				report_imac,
+			</if>
+			<if test="reportIdisk != null">
+				report_idisk,
+			</if>
+			<if test="reportIcpu != null">
+				report_icpu,
+			</if>
+			<if test="dbType != null">
+				db_type,
+			</if>
+			<if test="dbIp != null">
+				db_ip,
+			</if>
+			<if test="dbPost != null">
+				db_post,
+			</if>
+			<if test="dbName != null">
+				db_name,
+			</if>
+			<if test="dbUsername != null">
+				db_username,
+			</if>
+			<if test="dbPassword != null">
+				db_password,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="companyCode != null">
+				company_code,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="reportTime != null">
+				#{reportTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reportIp != null">
+				#{reportIp,jdbcType=VARCHAR},
+			</if>
+			<if test="reportImac != null">
+				#{reportImac,jdbcType=VARCHAR},
+			</if>
+			<if test="reportIdisk != null">
+				#{reportIdisk,jdbcType=VARCHAR},
+			</if>
+			<if test="reportIcpu != null">
+				#{reportIcpu,jdbcType=VARCHAR},
+			</if>
+			<if test="dbType != null">
+				#{dbType,jdbcType=VARCHAR},
+			</if>
+			<if test="dbIp != null">
+				#{dbIp,jdbcType=VARCHAR},
+			</if>
+			<if test="dbPost != null">
+				#{dbPost,jdbcType=VARCHAR},
+			</if>
+			<if test="dbName != null">
+				#{dbName,jdbcType=VARCHAR},
+			</if>
+			<if test="dbUsername != null">
+				#{dbUsername,jdbcType=VARCHAR},
+			</if>
+			<if test="dbPassword != null">
+				#{dbPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="shopCode != null">
+				#{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				#{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningStateEntity">
+		update plugin_running_state
+		<set>
+			<if test="reportTime != null">
+				report_time = #{reportTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reportIp != null">
+				report_ip = #{reportIp,jdbcType=VARCHAR},
+			</if>
+			<if test="reportImac != null">
+				report_imac = #{reportImac,jdbcType=VARCHAR},
+			</if>
+			<if test="reportIdisk != null">
+				report_idisk = #{reportIdisk,jdbcType=VARCHAR},
+			</if>
+			<if test="reportIcpu != null">
+				report_icpu = #{reportIcpu,jdbcType=VARCHAR},
+			</if>
+			<if test="dbType != null">
+				db_type = #{dbType,jdbcType=VARCHAR},
+			</if>
+			<if test="dbIp != null">
+				db_ip = #{dbIp,jdbcType=VARCHAR},
+			</if>
+			<if test="dbPost != null">
+				db_post = #{dbPost,jdbcType=VARCHAR},
+			</if>
+			<if test="dbName != null">
+				db_name = #{dbName,jdbcType=VARCHAR},
+			</if>
+			<if test="dbUsername != null">
+				db_username = #{dbUsername,jdbcType=VARCHAR},
+			</if>
+			<if test="dbPassword != null">
+				db_password = #{dbPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="shopCode != null">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="companyCode != null">
+				company_code = #{companyCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningStateEntity">
+		update plugin_running_state
+		set report_time = #{reportTime,jdbcType=TIMESTAMP},
+		report_ip = #{reportIp,jdbcType=VARCHAR},
+		report_imac = #{reportImac,jdbcType=VARCHAR},
+		report_idisk = #{reportIdisk,jdbcType=VARCHAR},
+		report_icpu = #{reportIcpu,jdbcType=VARCHAR},
+		db_type = #{dbType,jdbcType=VARCHAR},
+		db_ip = #{dbIp,jdbcType=VARCHAR},
+		db_post = #{dbPost,jdbcType=VARCHAR},
+		db_name = #{dbName,jdbcType=VARCHAR},
+		db_username = #{dbUsername,jdbcType=VARCHAR},
+		db_password = #{dbPassword,jdbcType=VARCHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		company_code = #{companyCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 分页查找插件运行数据 -->
+	<select id="selectRunningStateList" parameterType="cn.guludai.admin.web.request.PluginRunningStateReq" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from plugin_running_state
+		where  
+				data_status = 'Y'
+				and disk_status = 'Y'
+		   <if test="shopCode != null and shopCode != '' ">
+			   and	shop_code = #{shopCode,jdbcType=CHAR}
+			</if>
+			<if test="limit != null and limit != '' ">
+				limit  #{limit} OFFSET #{offset}
+		    </if>
+	</select>
+	
+	<!--查找插件运行数据总数 -->
+	<select id="selectRunningStateCount" parameterType="cn.guludai.admin.web.request.PluginRunningStateReq" resultType="java.lang.Integer">
+		select
+		count(1)
+		from plugin_running_state
+		where  
+				data_status = 'Y'
+				and disk_status = 'Y'
+		   <if test="shopCode != null and shopCode != '' ">
+			   and	shop_code = #{shopCode,jdbcType=CHAR}
+			</if>
+	</select>
+	
+	<!-- 通过门店编号修改插件运行数据 -->
+	<update id="updateRunningStateByStateCode" parameterType="cn.guludai.admin.domain.resource.entity.PluginRunningStateEntity" >
+		update plugin_running_state
+		<set>
+			<if test="reportTime != null">
+				report_time = #{reportTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reportIp != null">
+				report_ip = #{reportIp,jdbcType=VARCHAR},
+			</if>
+			<if test="reportImac != null">
+				report_imac = #{reportImac,jdbcType=VARCHAR},
+			</if>
+			<if test="reportIdisk != null">
+				report_idisk = #{reportIdisk,jdbcType=VARCHAR},
+			</if>
+			<if test="reportIcpu != null">
+				report_icpu = #{reportIcpu,jdbcType=VARCHAR},
+			</if>
+			<if test="dbType != null">
+				db_type = #{dbType,jdbcType=VARCHAR},
+			</if>
+			<if test="dbIp != null">
+				db_ip = #{dbIp,jdbcType=VARCHAR},
+			</if>
+			<if test="dbPost != null">
+				db_post = #{dbPost,jdbcType=VARCHAR},
+			</if>
+			<if test="dbName != null">
+				db_name = #{dbName,jdbcType=VARCHAR},
+			</if>
+			<if test="dbUsername != null">
+				db_username = #{dbUsername,jdbcType=VARCHAR},
+			</if>
+			<if test="dbPassword != null">
+				db_password = #{dbPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime == null">
+				update_time = NOW(),
+			</if>
+			<if test="version == null">
+				version = version + 1,
+			</if>
+		</set>
+		where state_code = #{stateCode} 
+	</update>
+	
+	<!-- 通过门店编号与数据库名查找插件运行数据信息 -->
+	<select id="selectRunningStateByStateCode" resultMap="BaseResultMap" >
+		 SELECT
+		<include refid="Base_Column_List" />
+		 FROM  plugin_running_state  WHERE state_code = #{stateCode}
+	</select>
+</mapper>

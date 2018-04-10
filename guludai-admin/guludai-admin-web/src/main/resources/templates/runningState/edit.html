@@ -1,0 +1,61 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+			    <input type="text" name="stateCode" style="display:none;"/>
+			     <input type="text" name="pluginIdcard" style="display:none;"/>
+			    <div class="layui-form-item">
+					<label class="layui-form-label">门店编号</label>
+					<div class="layui-input-block">
+						<input type="text" name="shopCode" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			    
+				 <div class="layui-form-item">
+						<label class="layui-form-label">类型</label>
+						<div class="layui-input-block">
+							<select lay-verify="required"  name="dbType">
+								<option value='mysql'>mysql</option>
+								<option value='oracle'>oracle</option>
+								<option value='sqlserver'>sqlserver</option>
+								<option value='postgresql'>postgresql</option>
+							</select>
+						</div>			  
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">ip</label>
+					<div class="layui-input-block">
+						<input type="text" name="dbIp" lay-verify="required" placeholder="数据库ip" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">端口号</label>
+					<div class="layui-input-block">
+						<input type="text" name="dbPost" lay-verify="required" placeholder="数据库端口号" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">库名</label>
+					<div class="layui-input-block">
+						<input type="text" name="dbName" lay-verify="required" placeholder="数据库名" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户名</label>
+					<div class="layui-input-block">
+						<input type="text" name="dbUsername" lay-verify="required" placeholder="数据库用户名" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">密码</label>
+					<div class="layui-input-block">
+						<input type="text" name="dbPassword" lay-verify="required" placeholder="数据库密码" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

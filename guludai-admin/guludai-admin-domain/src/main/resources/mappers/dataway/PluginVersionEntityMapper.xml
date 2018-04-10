@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.resource.dao.PluginVersionEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.resource.entity.PluginVersionEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="plugin_code" jdbcType="CHAR" property="pluginCode" />
+		<result column="plugin_name" jdbcType="VARCHAR" property="pluginName" />
+		<result column="plugin_version" jdbcType="VARCHAR" property="pluginVersion" />
+		<result column="plugin_version_order" jdbcType="INTEGER" property="pluginVersionOrder" />
+		<result column="plugin_status" jdbcType="CHAR" property="pluginStatus" />
+		<result column="download_url" jdbcType="VARCHAR" property="downloadUrl" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="erp_factory_code" jdbcType="CHAR" property="erpFactoryCode" />
+		<result column="erp_version_code" jdbcType="CHAR" property="erpVersionCode" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id,  plugin_code, plugin_name, plugin_version, plugin_version_order, plugin_status,
+		download_url, description, erp_factory_code, erp_version_code, create_time, update_time,
+		version, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_version
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		UPDATE  plugin_version SET  data_status = 'N' , disk_status = 'N'
+		where plugin_code = #{pluginCode,jdbcType=CHAR}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.resource.entity.PluginVersionEntity">
+		insert into plugin_version (id,  plugin_code, plugin_name,
+		plugin_version, plugin_version_order, plugin_status,
+		download_url, description, erp_factory_code,
+		erp_version_code, create_time, update_time,
+		version, data_status, disk_status
+		)
+		values (#{id,jdbcType=BIGINT},  #{pluginCode,jdbcType=CHAR}, #{pluginName,jdbcType=VARCHAR},
+		#{pluginVersion,jdbcType=VARCHAR}, #{pluginVersionOrder,jdbcType=INTEGER}, #{pluginStatus,jdbcType=CHAR},
+		#{downloadUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{erpFactoryCode,jdbcType=CHAR},
+		#{erpVersionCode,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{version,jdbcType=BIGINT}, #{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginVersionEntity">
+		insert into plugin_version
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="pluginCode != null">
+				plugin_code,
+			</if>
+			<if test="pluginName != null">
+				plugin_name,
+			</if>
+			<if test="pluginVersion != null">
+				plugin_version,
+			</if>
+			<if test="pluginVersionOrder != null">
+				plugin_version_order,
+			</if>
+			<if test="pluginStatus != null">
+				plugin_status,
+			</if>
+			<if test="downloadUrl != null">
+				download_url,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code,
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="pluginCode != null">
+				#{pluginCode,jdbcType=CHAR},
+			</if>
+			<if test="pluginName != null">
+				#{pluginName,jdbcType=VARCHAR},
+			</if>
+			<if test="pluginVersion != null">
+				#{pluginVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="pluginVersionOrder != null">
+				#{pluginVersionOrder,jdbcType=INTEGER},
+			</if>
+			<if test="pluginStatus != null">
+				#{pluginStatus,jdbcType=CHAR},
+			</if>
+			<if test="downloadUrl != null">
+				#{downloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				#{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				#{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.resource.entity.PluginVersionEntity">
+		update plugin_version
+		<set>
+			<if test="pluginCode != null">
+				plugin_code = #{pluginCode,jdbcType=CHAR},
+			</if>
+			<if test="pluginName != null">
+				plugin_name = #{pluginName,jdbcType=VARCHAR},
+			</if>
+			<if test="pluginVersion != null">
+				plugin_version = #{pluginVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="pluginVersionOrder != null">
+				plugin_version_order = #{pluginVersionOrder,jdbcType=INTEGER},
+			</if>
+			<if test="pluginStatus != null">
+				plugin_status = #{pluginStatus,jdbcType=CHAR},
+			</if>
+			<if test="downloadUrl != null">
+				download_url = #{downloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.resource.entity.PluginVersionEntity">
+		update plugin_version
+		set plugin_code = #{pluginCode,jdbcType=CHAR},
+		plugin_name = #{pluginName,jdbcType=VARCHAR},
+		plugin_version = #{pluginVersion,jdbcType=VARCHAR},
+		plugin_version_order = #{pluginVersionOrder,jdbcType=INTEGER},
+		plugin_status = #{pluginStatus,jdbcType=CHAR},
+		download_url = #{downloadUrl,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+		erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 通过erp厂商与erp版本号查找所有插件 -->
+	<select id="selectPluginVersionFor" resultMap="BaseResultMap" >
+		SELECT 
+		<include refid="Base_Column_List" />
+		FROM plugin_version v WHERE v.erp_factory_code = #{erpFactoryCode} AND v.erp_version_code = #{erpVersionCode}
+		 ORDER BY v.plugin_version_order  DESC LIMIT 1 
+	</select>
+	
+	<!-- 通过插件编号更新插件 -->
+	<update id="updateByPluginCode" parameterType="cn.guludai.admin.domain.resource.entity.PluginVersionEntity">
+		update plugin_version
+		<set>
+			<if test="pluginName != null">
+				plugin_name = #{pluginName,jdbcType=VARCHAR},
+			</if>
+			<if test="pluginVersion != null">
+				plugin_version = #{pluginVersion},
+			</if>
+			<if test="pluginStatus != null">
+				plugin_status = #{pluginStatus,jdbcType=CHAR},
+			</if>
+			<if test="downloadUrl != null">
+				download_url = #{downloadUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="erpFactoryCode != null">
+				erp_factory_code = #{erpFactoryCode,jdbcType=CHAR},
+			</if>
+			<if test="erpVersionCode != null">
+				erp_version_code = #{erpVersionCode,jdbcType=CHAR},
+			</if>
+			<if test="version == null">
+				version = version + 1 ,
+			</if>	
+		</set>
+		where plugin_code = #{pluginCode}
+	</update>
+	
+	<!-- 通过插件编号查找未被册除的任件 -->
+	<select id="selectPluginVersionByPluginCode" resultMap="BaseResultMap" >
+		SELECT * FROM plugin_version c WHERE c.plugin_code = #{pluginCode} AND c.data_status = 'Y' AND c.disk_status = 'Y'
+	</select>
+	
+	<!-- 多条件查找插件版本 -->
+	<select id="selectPluginVersionList" parameterType="cn.guludai.admin.web.request.PluginVersionReq"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from plugin_version
+		where  
+			data_status = 'Y'
+			and disk_status = 'Y'
+		<if test="pluginName != null and pluginName !='' ">
+			and plugin_name like CONCAT(CONCAT('%', #{pluginName}), '%') 
+		</if>
+		ORDER BY  create_time DESC
+		<if test="limit != null and limit != '' ">
+				limit  #{limit} OFFSET #{offset}
+		</if>
+	</select>
+	
+		<!-- 多条件查找插件版本总数 -->
+	<select id="selectPluginVersionListCount" parameterType="cn.guludai.admin.domain.resource.entity.PluginVersionEntity"  resultType="java.lang.Integer">
+		select
+		count(1)
+		from plugin_version
+		where  
+			data_status = 'Y'
+			and disk_status = 'Y'
+		<if test="pluginName != null and pluginName !='' ">
+			and plugin_name = #{pluginName} 
+		</if>
+	</select>
+	
+	
+</mapper>

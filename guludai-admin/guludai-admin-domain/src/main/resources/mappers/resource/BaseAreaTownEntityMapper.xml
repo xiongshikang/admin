@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.dataway.dao.BaseAreaTownEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.dataway.entity.BaseAreaTownEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="city_no" jdbcType="CHAR" property="cityNo" />
+		<result column="town_no" jdbcType="CHAR" property="townNo" />
+		<result column="town_name" jdbcType="VARCHAR" property="townName" />
+		<result column="orders" jdbcType="SMALLINT" property="orders" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, city_no, town_no, town_name, orders, version, create_time, update_time, data_status,
+		disk_status
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_area_town
+		where city_no = #{cityNo,jdbcType=CHAR}
+		AND town_no = #{townNo,jdbcType=CHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from base_area_town
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaTownEntity">
+		insert into base_area_town (id, city_no, town_no,
+		town_name, orders, version,
+		create_time, update_time, data_status,
+		disk_status)
+		values (#{id,jdbcType=BIGINT}, #{cityNo,jdbcType=CHAR}, #{townNo,jdbcType=CHAR},
+		#{townName,jdbcType=VARCHAR}, #{orders,jdbcType=SMALLINT}, #{version,jdbcType=BIGINT},
+		#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR},
+		#{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaTownEntity">
+		insert into base_area_town
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="cityNo != null">
+				city_no,
+			</if>
+			<if test="townNo != null">
+				town_no,
+			</if>
+			<if test="townName != null">
+				town_name,
+			</if>
+			<if test="orders != null">
+				orders,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="cityNo != null">
+				#{cityNo,jdbcType=CHAR},
+			</if>
+			<if test="townNo != null">
+				#{townNo,jdbcType=CHAR},
+			</if>
+			<if test="townName != null">
+				#{townName,jdbcType=VARCHAR},
+			</if>
+			<if test="orders != null">
+				#{orders,jdbcType=SMALLINT},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaTownEntity">
+		update base_area_town
+		<set>
+			<if test="cityNo != null">
+				city_no = #{cityNo,jdbcType=CHAR},
+			</if>
+			<if test="townNo != null">
+				town_no = #{townNo,jdbcType=CHAR},
+			</if>
+			<if test="townName != null">
+				town_name = #{townName,jdbcType=VARCHAR},
+			</if>
+			<if test="orders != null">
+				orders = #{orders,jdbcType=SMALLINT},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.dataway.entity.BaseAreaTownEntity">
+		update base_area_town
+		set city_no = #{cityNo,jdbcType=CHAR},
+		town_no = #{townNo,jdbcType=CHAR},
+		town_name = #{townName,jdbcType=VARCHAR},
+		orders = #{orders,jdbcType=SMALLINT},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+
+	<!--获取镇列表,根据城市编码获取-->
+	<select id="getTown" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM base_area_town
+		WHERE data_status = 'Y' AND disk_status = 'Y'
+		<if test="cityNo != null">
+			AND city_no = #{cityNo}
+		</if>
+	</select>
+
+
+</mapper>

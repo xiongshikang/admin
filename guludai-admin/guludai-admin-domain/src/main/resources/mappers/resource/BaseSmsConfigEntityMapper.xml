@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.admin.domain.dataway.dao.BaseSmsConfigEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.admin.domain.dataway.entity.BaseSmsConfigEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="sms_code" jdbcType="CHAR" property="smsCode" />
+		<result column="sms_type" jdbcType="INTEGER" property="smsType" />
+		<result column="send_cycle" jdbcType="CHAR" property="sendCycle" />
+		<result column="send_rate" jdbcType="INTEGER" property="sendRate" />
+		<result column="sms_check" jdbcType="CHAR" property="smsCheck" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, sms_code, sms_type, send_cycle, send_rate, sms_check, version, create_time, update_time,
+		data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_sms_config
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from base_sms_config
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsConfigEntity">
+		insert into base_sms_config (id, sms_code, sms_type,
+		send_cycle, send_rate, sms_check,
+		version, create_time, update_time,
+		data_status, disk_status)
+		values (#{id,jdbcType=BIGINT}, #{smsCode,jdbcType=CHAR}, #{smsType,jdbcType=INTEGER},
+		#{sendCycle,jdbcType=CHAR}, #{sendRate,jdbcType=INTEGER}, #{smsCheck,jdbcType=CHAR},
+		#{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsConfigEntity">
+		insert into base_sms_config
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="smsCode != null">
+				sms_code,
+			</if>
+			<if test="smsType != null">
+				sms_type,
+			</if>
+			<if test="sendCycle != null">
+				send_cycle,
+			</if>
+			<if test="sendRate != null">
+				send_rate,
+			</if>
+			<if test="smsCheck != null">
+				sms_check,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="smsCode != null">
+				#{smsCode,jdbcType=CHAR},
+			</if>
+			<if test="smsType != null">
+				#{smsType,jdbcType=INTEGER},
+			</if>
+			<if test="sendCycle != null">
+				#{sendCycle,jdbcType=CHAR},
+			</if>
+			<if test="sendRate != null">
+				#{sendRate,jdbcType=INTEGER},
+			</if>
+			<if test="smsCheck != null">
+				#{smsCheck,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsConfigEntity">
+		update base_sms_config
+		<set>
+			<if test="smsCode != null">
+				sms_code = #{smsCode,jdbcType=CHAR},
+			</if>
+			<if test="smsType != null">
+				sms_type = #{smsType,jdbcType=INTEGER},
+			</if>
+			<if test="sendCycle != null">
+				send_cycle = #{sendCycle,jdbcType=CHAR},
+			</if>
+			<if test="sendRate != null">
+				send_rate = #{sendRate,jdbcType=INTEGER},
+			</if>
+			<if test="smsCheck != null">
+				sms_check = #{smsCheck,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.admin.domain.dataway.entity.BaseSmsConfigEntity">
+		update base_sms_config
+		set sms_code = #{smsCode,jdbcType=CHAR},
+		sms_type = #{smsType,jdbcType=INTEGER},
+		send_cycle = #{sendCycle,jdbcType=CHAR},
+		send_rate = #{sendRate,jdbcType=INTEGER},
+		sms_check = #{smsCheck,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!--根据短信模板查询信息-->
+	<select id="selectByCode"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from base_sms_config
+		where sms_code = #{smsCode,jdbcType=CHAR}
+		AND sms_type = #{smsType}
+	</select>
+</mapper>
